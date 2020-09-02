@@ -20,6 +20,8 @@ let playDijkstar = false;
 
 let playBFS = false;
 
+let playDFS = false;
+
 let addWalls = false;
 
 let addStart = false;
@@ -98,6 +100,7 @@ function Spot(i, j) {
   this.neighbours = [];
   this.previous = undefined;
   this.wall = false;
+  this.visited = false;
 
   if (randWalls) {
     if (random(1) < 0.3) {
@@ -243,8 +246,6 @@ function draw() {
             openSet.push(neighbour);
           }
 
-          //neighbour.h = heuristic(neighbour, end);
-          //neighbour.f = neighbour.g + neighbour.h;
           neighbour.previous = current;
         }
       }
@@ -278,7 +279,7 @@ function draw() {
       for (let i = 0; i < neighbours.length; i++) {
         let neighbour = neighbours[i];
 
-        if (!closedSet.includes(neighbour)){
+        if (!closedSet.includes(neighbour)) {
           var tempG = current.g + 1;
 
           if (openSet.includes(neighbour)) {
@@ -304,6 +305,32 @@ function draw() {
 
   }
 
+  if (playDFS) {
+    if (openSet.length > 0) {
+      console.log("in dfs");
+      var current = openSet.pop();
+      if (current === end) {
+        noLoop();
+        console.log("DONE!!");
+      }
+      if (!current.visited) {
+        current.visited = true;
+        for (let i = 0; i < current.neighbours.length; i++) {
+          let neighbour = current.neighbours[i];
+          if (!neighbour.visited && !neighbour.wall) {
+            openSet.push(neighbour);
+            neighbour.previous = current;
+          }
+        }
+      }
+    } else {
+      noLoop();
+      alert("No Solution!");
+      console.log("no solution!");
+      noSolution = true;
+    }
+  }
+
   background(0);
 
   for (let i = 0; i < cols; i++) {
@@ -312,11 +339,13 @@ function draw() {
     }
   }
 
+
   for (let i = 0; i < openSet.length; i++) {
     openSet[i].show("#3282b8");
   }
 
-  if (!noSolution && (playAStar || playDijkstar || playBFS)) {
+
+  if (!noSolution && (playAStar || playDijkstar || playBFS || playDFS)) {
     path = [];
     let temp = current;
     path.push(temp);
@@ -340,24 +369,30 @@ function draw() {
 }
 
 function pathAStar() {
-  if(start && end){
+  if (start && end) {
     playAStar = true;
   }
 }
 
 function pathDijkstar() {
-  if(start && end){
+  if (start && end) {
     playDijkstar = true;
   }
 }
 
 function pathBFS() {
-  if(start && end){
+  if (start && end) {
     playBFS = true;
   }
 }
 
-function reset(){
+function pathDFS() {
+  if (start && end) {
+    playDFS = true;
+  }
+}
+
+function reset() {
   openSet = [];
   closedSet = [];
   path = [];
@@ -369,6 +404,7 @@ function reset(){
   playAStar = false;
   playBFS = false;
   playDijkstar = false;
+  playDFS = false;
   randWalls = false;
   for (let i = 0; i < cols; i++) {
     grid[i] = new Array(rows);
@@ -385,5 +421,5 @@ function reset(){
       grid[i][j].addNeighbours(grid);
     }
   }
-loop();
+  loop();
 }
