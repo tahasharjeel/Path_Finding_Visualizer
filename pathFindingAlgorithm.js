@@ -406,6 +406,7 @@ function reset() {
   playDijkstar = false;
   playDFS = false;
   randWalls = false;
+  noSolution = false;
   for (let i = 0; i < cols; i++) {
     grid[i] = new Array(rows);
   }
