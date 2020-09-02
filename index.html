@@ -1,125 +1,114 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <meta charset="utf-8">
-    <style>
-.slidecontainer {
-  width: 50%;
-  margin : auto;
-  margin-top: 0px;
-  text-align:center;
 
-}
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <style>
+    .slidecontainer {
+      width: 50%;
+      margin: auto;
+      margin-top: 0px;
+      text-align: center;
 
-body{
-  text-align: center;
-  background-color: #3282b8;
-}
+    }
 
-nav{
-  margin-bottom: 50px;
-}
+    body {
+      text-align: center;
+      background-color: #3282b8;
+    }
 
-
-.slider {
-
-  -webkit-appearance: none;
-  width: 100%;
-  height: 25px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
-  cursor: pointer;
-}
-
-p{
-  font-size: 20px;
-  color: white;
-  font-family: 'Lobster', cursive;
-  margin-bottom: 1px;
-}
+    nav {
+      margin-bottom: 50px;
+    }
 
 
-</style>
-    <title>A Star</title>
+    .slider {
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+      -webkit-appearance: none;
+      width: 100%;
+      height: 25px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
 
-    <script src="pathFindingAlgorithm.js"></script>
-  </head>
-  <body>
+    .slider:hover {
+      opacity: 1;
+    }
 
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
 
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #393e46;">
-      <div class="dropdown">
-        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Algorithms
-        </button>
-        <button onclick="addStart = true" class="btn btn-info">Add Start</button>
-        <button onclick="addEnd = true" class="btn btn-info">Add End</button>
-        <button onclick="randGen()" class="btn btn-info">Auto Generate Walls</button>
-        <button onclick="addWalls = true" class="btn btn-info">Add Walls</button>
-        <button onclick="reset()" class="btn btn-info">Reset</button>
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+
+    p {
+      font-size: 20px;
+      color: white;
+      font-family: 'Lobster', cursive;
+      margin-bottom: 1px;
+    }
+  </style>
+  <title>A Star</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+
+  <script src="pathFindingAlgorithm.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #393e46;">
+    <div class="dropdown">
+      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Algorithms
+      </button>
+      <button onclick="addStart = true" class="btn btn-info">Add Start</button>
+      <button onclick="addEnd = true" class="btn btn-info">Add End</button>
+      <button onclick="randGen()" class="btn btn-info">Auto Generate Walls</button>
+      <button onclick="addWalls = true" class="btn btn-info">Add Walls</button>
+      <button onclick="reset()" class="btn btn-info">Reset</button>
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" onclick="pathAStar()">A*</a>
         <a class="dropdown-item" onclick="pathDijkstar()">Dijkstar</a>
         <a class="dropdown-item" onclick="pathBFS()">BFS</a>
-
+        <a class="dropdown-item" onclick="pathDFS()">DFS</a>
       </div>
     </div>
-
 
     <div class="slidecontainer">
       <p>Speed: <span id="demo"></span>%</p>
       <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
     </div>
+  </nav>
 
-    </nav>
+  <script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
 
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+  </script>
 
-
-
-
-
-
-
-
-<script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-</script>
-
-  </body>
+</body>
 </html>
